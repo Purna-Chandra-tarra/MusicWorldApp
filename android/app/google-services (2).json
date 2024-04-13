@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "686525289113",
+    "project_id": "audiomusic-ebba6",
+    "storage_bucket": "audiomusic-ebba6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:686525289113:android:929a20e9b2108841d89e08",
+        "android_client_info": {
+          "package_name": "com.example.audioapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsbWNPQQLLzXTsMJPcf9wvyrFRAorre0E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
