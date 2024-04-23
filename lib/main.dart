@@ -4,9 +4,13 @@ import 'package:audioapp/utils/dimensions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_downloader/flutter_downloader.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 Future<void> main() async {
+  
  WidgetsFlutterBinding.ensureInitialized();
+ FlutterDownloader.initialize();
  await Firebase.initializeApp(
   options: FirebaseOptions(
           apiKey: 'AIzaSyAsbWNPQQLLzXTsMJPcf9wvyrFRAorre0E',
@@ -23,7 +27,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return MaterialApp(
+    return GetMaterialApp(
+      
       debugShowCheckedModeBanner: false,
       title: 'My App',
       home: StreamBuilder(
@@ -32,7 +37,7 @@ class MyApp extends StatelessWidget {
           if (snapshot.hasData) {
             return const TabsScreen();
           }
-          return const TabsScreen();
+          return SignUpPage();
         },
       ),
     );

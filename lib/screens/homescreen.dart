@@ -21,6 +21,8 @@ import 'package:audioapp/utils/playlist.dart';
 import 'package:audioapp/utils/trendalbum.dart';
 import 'package:audioapp/utils/trendsong.dart';
 import 'package:audioplayers/audioplayers.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -30,12 +32,14 @@ import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   final Language? language;
+  final String? userId;
   final TrendSong? trendSong;
   //final void Function(Song song) onToggleFavorite;
 
   const HomeScreen({
     Key? key,
     required this.language,
+    this.userId,
     this.trendSong
   }) : super(
           key: key,
@@ -63,6 +67,7 @@ class _HomeScreenState extends State<HomeScreen>  with SingleTickerProviderState
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   bool isFavorite = false;
   bool loopEnabled = false;
+  
   bool isPlaying = false;
 
   String images = "";
@@ -89,6 +94,7 @@ late ScrollController _scrollController;
      _scrollController = ScrollController();
     audioPlayer = AudioPlayer();
     audioCache = AudioCache();
+      String? userId = getUserId();
     fetchAlbums();
     _scrollController1 = ScrollController();
     _scrollController3 = ScrollController();
@@ -346,9 +352,22 @@ void playAudio(String url) async {
     Navigator.of(context)
         .push(MaterialPageRoute(builder: (ctx) => SearchScreenSongs()));
   }
+  String? getUserId() {
+  // Get the current user from FirebaseAuth
+  User? user = FirebaseAuth.instance.currentUser;
+
+  // Check if the user is not null, then return the user's ID
+  if (user != null) {
+    return user.uid;
+  } else {
+    // If user is null (not signed in), return null or handle accordingly
+    return null;
+  }
+}
 
   @override
   Widget build(BuildContext context) {
+    String? userId= widget.userId;
     return Scaffold(
       appBar: AppBar(
         title: Text('MUSIC'),
@@ -397,7 +416,8 @@ void playAudio(String url) async {
                                     return SongCard(
                                         album: albums[index],
                                         onSelectedAlbum: (album) {
-                                          _selectAlbum(context, album);
+                                          // _selectAlbum(context, album);
+                                          Get.to(SongsListScreen(album: album,), fullscreenDialog: true, transition: Transition.zoom,duration: Duration(milliseconds: 3000));
                                         });
                                   }),
                             ),

@@ -27,10 +27,7 @@ class DefaultFirebaseOptions {
       case TargetPlatform.macOS:
         return macos;
       case TargetPlatform.windows:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for windows - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return windows;
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -44,37 +41,47 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyC17dXN1fsj7nfakqJnZtj63XlypF3KLvg',
-    appId: '1:391332575316:web:77916e0828380ebd0715c1',
-    messagingSenderId: '391332575316',
-    projectId: 'cricket-f563d',
-    authDomain: 'cricket-f563d.firebaseapp.com',
-    storageBucket: 'cricket-f563d.appspot.com',
+    apiKey: 'AIzaSyCfMdHP4RPnxtfHVYTdvaUKZ3HTWb3ACHU',
+    appId: '1:686525289113:web:03b06b50df43905ed89e08',
+    messagingSenderId: '686525289113',
+    projectId: 'audiomusic-ebba6',
+    authDomain: 'audiomusic-ebba6.firebaseapp.com',
+    storageBucket: 'audiomusic-ebba6.appspot.com',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAXIl7Be3fCH3HTjE-SuJG3LwyLr1Qphx8',
-    appId: '1:391332575316:android:715b9683ba0e9dc50715c1',
-    messagingSenderId: '391332575316',
-    projectId: 'cricket-f563d',
-    storageBucket: 'cricket-f563d.appspot.com',
+    apiKey: 'AIzaSyAsbWNPQQLLzXTsMJPcf9wvyrFRAorre0E',
+    appId: '1:686525289113:android:929a20e9b2108841d89e08',
+    messagingSenderId: '686525289113',
+    projectId: 'audiomusic-ebba6',
+    storageBucket: 'audiomusic-ebba6.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAqlNaG2iPEkGfE87ThGgHfOzKFIfBawrI',
-    appId: '1:391332575316:ios:ee66d05ecd585bb90715c1',
-    messagingSenderId: '391332575316',
-    projectId: 'cricket-f563d',
-    storageBucket: 'cricket-f563d.appspot.com',
-    iosBundleId: 'com.example.match',
+    apiKey: 'AIzaSyDFAnpkQNaK61AbZQGLG6TdES3Hd_-Y7cY',
+    appId: '1:686525289113:ios:e7796e3d0ae9e019d89e08',
+    messagingSenderId: '686525289113',
+    projectId: 'audiomusic-ebba6',
+    storageBucket: 'audiomusic-ebba6.appspot.com',
+    iosBundleId: 'com.example.audioapp',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyAqlNaG2iPEkGfE87ThGgHfOzKFIfBawrI',
-    appId: '1:391332575316:ios:a1ca2295b08216710715c1',
-    messagingSenderId: '391332575316',
-    projectId: 'cricket-f563d',
-    storageBucket: 'cricket-f563d.appspot.com',
-    iosBundleId: 'com.example.match.RunnerTests',
+    apiKey: 'AIzaSyDFAnpkQNaK61AbZQGLG6TdES3Hd_-Y7cY',
+    appId: '1:686525289113:ios:e7796e3d0ae9e019d89e08',
+    messagingSenderId: '686525289113',
+    projectId: 'audiomusic-ebba6',
+    storageBucket: 'audiomusic-ebba6.appspot.com',
+    iosBundleId: 'com.example.audioapp',
   );
+
+  static const FirebaseOptions windows = FirebaseOptions(
+    apiKey: 'AIzaSyCfMdHP4RPnxtfHVYTdvaUKZ3HTWb3ACHU',
+    appId: '1:686525289113:web:a98062832aa4a270d89e08',
+    messagingSenderId: '686525289113',
+    projectId: 'audiomusic-ebba6',
+    authDomain: 'audiomusic-ebba6.firebaseapp.com',
+    storageBucket: 'audiomusic-ebba6.appspot.com',
+  );
+
 }

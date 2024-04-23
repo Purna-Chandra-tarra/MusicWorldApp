@@ -1,6 +1,7 @@
 class Song {
   final String id;
   final String name;
+    String? album;
   bool isFavorite; 
   final List<Map<String, dynamic>> image;
   // final Album album;
@@ -25,6 +26,7 @@ class Song {
     required this.id,
     required this.name,
      required this.image,
+     this.album,
      this.isFavorite = false,
     // required this.album,
     // required this.year,

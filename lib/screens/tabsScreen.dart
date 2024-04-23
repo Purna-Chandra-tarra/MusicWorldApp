@@ -1,9 +1,13 @@
 
 import 'package:audioapp/models/album_model.dart';
 import 'package:audioapp/models/songsmodel.dart';
+import 'package:audioapp/screens/Favorites.dart';
 import 'package:audioapp/screens/LanguageScreen.dart';
+import 'package:audioapp/screens/SignupScreen.dart';
 import 'package:audioapp/screens/songslistscreen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class TabsScreen extends StatefulWidget {
   const TabsScreen({super.key});
@@ -60,13 +64,18 @@ class _TabsScreenState extends State<TabsScreen> {
 //   }
 // }
 
-
+ void _signOut(BuildContext context) async {
+    await FirebaseAuth.instance.signOut();
+    Get.off(SignUpPage());
+    // You can navigate to the login page or any other page after sign-out
+  }
   void _selectPage(int index) {
     setState(() {
       _selectedPageIndex = index;
     });
   }
 
+  final user=FirebaseAuth.instance.currentUser;
   @override
   Widget build(BuildContext context) {
     Widget activePage = LanguageScreen(
@@ -74,16 +83,19 @@ class _TabsScreenState extends State<TabsScreen> {
     );
     var activePageTitel = 'Languages';
     if (_selectedPageIndex == 1) {
-      activePage = SongsListScreen(
-        // songs: _favoriteSongs,
-        
-      );
+      activePage = FavoriteSongsScreen();
       print(_favoriteSongs);
       activePageTitel = 'Your Favorites';
     }
     return Scaffold(
       appBar: AppBar(
         title: Text(activePageTitel),
+         actions: [
+          IconButton(
+            icon: Icon(Icons.exit_to_app),
+            onPressed: () => _signOut(context),
+          ),
+        ],
       ),
       body: activePage,
       bottomNavigationBar: BottomNavigationBar(
